@@ -2,26 +2,21 @@
 {%block content%}
 <main role="main">
   <div class="jumbotron text-center">
-    <div class="container">
       <h1>Vote your favorite</h1>
     <p class="lead">List, share and explore products hunted by many<br> Upvote the ones you like most</p>
-  </div>
-
+</div>
+{%for product in product.all %}
   <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row" >
-          <div class="col-md-4" >
-            <div class="content" >
-              <img src="https://images-na.ssl-images-amazon.com/images/I/71NMCqCxj-L._SY879_.jpg" style="width:50%" />
-                <button type = "button" class = "btn btn-primary btn-lg">Upvote</button>
-              <div class="card-body">
-                <p class="card-text">product 1</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+              <h2 class="blog-post-title">{{product.title}}</h2>
+              <p class="blog-post-meta">{{product.pub_date}} {{product.hunter}}</p>
+              <img   class="img-fluid" src={{product.icon.url}} height="300" width="300"/>
+    <br>
+    <a href="{% url 'detail' product.id %}" target="_blank">More</a>
+</div>
   </div>
+{%endfor%}
+
 </main><!-- /.container -->
 
 {%endblock%}
